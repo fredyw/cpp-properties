@@ -30,4 +30,20 @@ Properties::Properties() {
 Properties::~Properties() {
 }
 
+std::string Properties::GetProperty(const std::string& key) const {
+    // TODO: implement this
+    return "";
+}
+
+std::string Properties::GetProperty(const std::string& key, const std::string& defaultValue) const {
+    // TODO: implement this
+    return "";
+}
+
+std::vector<std::string> Properties::GetPropertyNames() const {
+    std::vector<std::string> v;
+    // TODO: implement this
+    return v;
+}
+
 } /* namespace cppproperties */

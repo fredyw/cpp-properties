@@ -23,12 +23,33 @@
 #ifndef PROPERTIES_H_
 #define PROPERTIES_H_
 
+#include <string>
+#include <vector>
+#include <map>
+
 namespace cppproperties {
 
 class Properties {
 public:
     Properties();
     virtual ~Properties();
+
+    /**
+     * Gets the property value from a given key.
+     */
+    std::string GetProperty(const std::string& key) const;
+
+    /**
+     * Gets the property value from a given key. Use a default value if not found.
+     */
+    std::string GetProperty(const std::string& key, const std::string& defaultValue) const;
+
+    /**
+     * Gets the list of property names.
+     */
+    std::vector<std::string> GetPropertyNames() const;
+private:
+    std::map<std::string, std::string> properties;
 };
 
 } /* namespace cppproperties */

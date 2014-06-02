@@ -33,7 +33,10 @@ public:
     PropertiesParser();
     virtual ~PropertiesParser();
 
-    Properties Parse(const std::string& file);
+    /**
+     * Parses a file and return a Properties object.
+     */
+    static Properties Parse(const std::string& file);
 };
 
 } /* namespace cppproperties */

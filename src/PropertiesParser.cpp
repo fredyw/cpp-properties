@@ -30,4 +30,12 @@ PropertiesParser::PropertiesParser() {
 PropertiesParser::~PropertiesParser() {
 }
 
+Properties PropertiesParser::Parse(const std::string& file) {
+    Properties properties;
+
+    // TODO: implement this
+
+    return properties;
+}
+
 } /* namespace cppproperties */
