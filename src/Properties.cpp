@@ -31,19 +31,29 @@ Properties::~Properties() {
 }
 
 std::string Properties::GetProperty(const std::string& key) const {
-    // TODO: implement this
-    return "";
+    if (properties.find(key) == properties.end()) {
+        std::string msg = key + " does not exist";
+        throw PropertyNotFoundException(msg.c_str());
+    }
+    return properties.at(key);
 }
 
 std::string Properties::GetProperty(const std::string& key, const std::string& defaultValue) const {
-    // TODO: implement this
-    return "";
+    if (properties.find(key) == properties.end()) {
+        return defaultValue;
+    }
+    return properties.at(key);
 }
 
 std::vector<std::string> Properties::GetPropertyNames() const {
-    std::vector<std::string> v;
-    // TODO: implement this
-    return v;
+    return keys;
+}
+
+void Properties::AddProperty(const std::string& key, const std::string& value) {
+    if (properties.find(key) == properties.end()) {
+        keys.push_back(key);
+    }
+    properties[key] = value;
 }
 
 } /* namespace cppproperties */

@@ -19,32 +19,57 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-#ifndef PROPERTIESPARSER_H_
-#define PROPERTIESPARSER_H_
+#ifndef PROPERTIESUTILS_H_
+#define PROPERTIESUTILS_H_
 
 #include <string>
-#include <exception>
-#include "Properties.h"
+#include <utility>
 
 namespace cppproperties {
+namespace PropertiesUtils {
 
-class PropertiesParser {
-public:
-    PropertiesParser();
-    virtual ~PropertiesParser();
+/**
+ * Left trims a string.
+ * This function doesn't modify the given str.
+ */
+std::string LeftTrim(const std::string& str);
 
-    /**
-     * Reads a properties file and returns a Properties object.
-     */
-    static Properties Read(const std::string& file);
+/**
+ * Right trims a string.
+ * This function doesn't modify the given str.
+ */
+std::string RightTrim(const std::string& str);
 
-    /**
-     * Writes Properties object to a file.
-     */
-    static void Write(const std::string& file, const Properties& props);
-};
+/**
+ * Trims a string (perform a left and right trims).
+ * This function doesn't modify the given str.
+ */
+std::string Trim(const std::string& str);
 
-} /* namespace cppproperties */
+/**
+ * Is a given string a property. A property must have the following format:
+ * key=value
+ */
+bool IsProperty(const std::string& str);
 
-#endif /* PROPERTIESPARSER_H_ */
+/**
+ * Parses a given property into a pair of key and value.
+ *
+ * ParseProperty assumes a given string has a correct format.
+ */
+std::pair<std::string, std::string> ParseProperty(const std::string& str);
+
+/**
+ * Is a given string a comment? A comment starts with #
+ */
+bool IsComment(const std::string& str);
+
+/**
+ * Is a given string empty?
+ */
+bool IsEmptyLine(const std::string& str);
+
+} // namespace PropertiesUtils
+} // namespace cppproperties
+
+#endif /* PROPERTIESUTILS_H_ */

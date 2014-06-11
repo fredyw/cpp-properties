@@ -20,7 +20,10 @@
  * SOFTWARE.
  */
 
+#include <fstream>
+#include <iostream>
 #include "PropertiesParser.h"
+#include "PropertiesUtils.h"
 
 namespace cppproperties {
 
@@ -30,12 +33,57 @@ PropertiesParser::PropertiesParser() {
 PropertiesParser::~PropertiesParser() {
 }
 
-Properties PropertiesParser::Parse(const std::string& file) {
+Properties PropertiesParser::Read(const std::string& file) {
     Properties properties;
 
-    // TODO: implement this
+    std::ifstream is;
+    is.open(file.c_str());
+    if (!is.is_open()) {
+        std::string msg = "Unable to read " + file;
+        throw PropertiesException(msg.c_str());
+    }
+
+    try {
+        std::string line;
+        while (getline(is, line)) {
+            if (PropertiesUtils::IsProperty(line)) {
+                std::pair<std::string, std::string> prop = PropertiesUtils::ParseProperty(line);
+                properties.AddProperty(prop.first, prop.second);
+            } else if (PropertiesUtils::IsEmptyLine(line) || PropertiesUtils::IsComment(line)) {
+                // ignore it
+            } else {
+                std::string msg = "Invalid line: " + line;
+                throw PropertiesException(msg.c_str());
+            }
+        }
+    } catch (...) {
+        // don't forget to close the ifstream
+        is.close();
+        throw;
+    }
 
     return properties;
+}
+
+void PropertiesParser::Write(const std::string& file, const Properties& props) {
+    std::ofstream os;
+    os.open(file.c_str());
+    if (!os.is_open()) {
+        std::string msg = "Unable to write " + file;
+        throw PropertiesException(msg.c_str());
+    }
+
+    try {
+        std::vector<std::string> keys = props.GetPropertyNames();
+        for (std::vector<std::string>::const_iterator i = keys.begin();
+            i != keys.end(); ++i) {
+            os << *i << " = " << props.GetProperty(*i) << std::endl;
+        }
+    } catch (...) {
+        // don't forget to close the ofstream
+        os.close();
+        throw;
+    }
 }
 
 } /* namespace cppproperties */
