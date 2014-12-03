@@ -77,6 +77,13 @@ public:
      * the old one.
      */
     void AddProperty(const std::string& key, const std::string& value);
+
+    /**
+     * Removes the property from a given key.
+     *
+     * If the property doesn't exist a PropertyNotFoundException will be thrown.
+     */
+    void RemoveProperty(const std::string& key);
 private:
     // to preserve the order
     std::vector<std::string> keys;

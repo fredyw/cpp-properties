@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
+#include <algorithm>
 #include "Properties.h"
 
 namespace cppproperties {
@@ -54,6 +54,15 @@ void Properties::AddProperty(const std::string& key, const std::string& value) {
         keys.push_back(key);
     }
     properties[key] = value;
+}
+
+void Properties::RemoveProperty(const std::string& key) {
+    if (properties.find(key) == properties.end()) {
+        std::string msg = key + " does not exist";
+        throw PropertyNotFoundException(msg.c_str());
+    }
+    keys.erase(std::remove(keys.begin(), keys.end(), key), keys.end());
+    properties.erase(key);
 }
 
 } /* namespace cppproperties */
