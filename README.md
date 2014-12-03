@@ -7,6 +7,12 @@ How to build
 ------------
 cpp-iniparser uses CMake build system (http://www.cmake.org/).
 
+# Linux:
+    ./build.sh
+    
+# Windows:
+    ./build.bat
+
 Examples
 --------
 __input.properties__

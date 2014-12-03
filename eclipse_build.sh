@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# CMake Eclipse generator doesn't really work with out-of-source build
 if [[ $1 == "--clean" ]]; then
     rm -rf .project
     rm -rf .cproject
