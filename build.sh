@@ -1,5 +1,7 @@
 #!/bin/bash
 
-cmake -G "Eclipse CDT4 - Unix Makefiles"
+rm -rf build
+mkdir build
+cd build
+cmake ..
 make
-make test

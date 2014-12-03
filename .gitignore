@@ -1,7 +1,10 @@
 /Debug
+/build
 .cproject
 .project
 .settings
 CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
+libgtest.a
+libgtest_main.a
