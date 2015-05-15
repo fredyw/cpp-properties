@@ -16,4 +16,5 @@ else
     cmake -G "Eclipse CDT4 - Unix Makefiles" -Dtest=ON
     make
     make test
+    ./cppproperties_unittests
 fi

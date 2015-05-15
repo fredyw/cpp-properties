@@ -46,11 +46,11 @@ Properties PropertiesParser::Read(const std::string& file) {
     try {
         std::string line;
         while (getline(is, line)) {
-            if (PropertiesUtils::IsProperty(line)) {
+            if (PropertiesUtils::IsEmptyLine(line) || PropertiesUtils::IsComment(line)) {
+                // ignore it
+            } else if (PropertiesUtils::IsProperty(line)) {
                 std::pair<std::string, std::string> prop = PropertiesUtils::ParseProperty(line);
                 properties.AddProperty(prop.first, prop.second);
-            } else if (PropertiesUtils::IsEmptyLine(line) || PropertiesUtils::IsComment(line)) {
-                // ignore it
             } else {
                 std::string msg = "Invalid line: " + line;
                 throw PropertiesException(msg.c_str());
