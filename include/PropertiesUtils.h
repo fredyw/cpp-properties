@@ -72,6 +72,4 @@ bool IsEmptyLine(const std::string& str);
 } // namespace PropertiesUtils
 } // namespace cppproperties
 
-std::string ltrim(const std::string& str);
-
 #endif /* PROPERTIESUTILS_H_ */

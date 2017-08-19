@@ -7,6 +7,5 @@ mkdir $BUILD_DIR
 cd $BUILD_DIR
 cmake -Dtest=ON ..
 make
-make test
 cd ..
 $BUILD_DIR/cppproperties_unittests

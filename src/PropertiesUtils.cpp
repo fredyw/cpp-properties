@@ -26,6 +26,13 @@ namespace PropertiesUtils {
 
 namespace {
 const std::string TRIM_DELIMITERS = " \f\n\r\t\v";
+std::string ltrim(const std::string& str) {
+    std::string::size_type s = str.find_first_not_of(TRIM_DELIMITERS);
+    if (s == std::string::npos) {
+        return "";
+    }
+    return str.substr(s);
+}
 }
 
 std::string RightTrim(const std::string& str) {
@@ -86,12 +93,3 @@ bool IsEmptyLine(const std::string& str) {
 } // namespace PropertiesUtils
 } // namespace cppproperties
 
-const std::string TRIM_DELIMITERS = " \f\n\r\t\v";
-
-std::string ltrim(const std::string& str) {
-    std::string::size_type s = str.find_first_not_of(TRIM_DELIMITERS);
-    if (s == std::string::npos) {
-        return "";
-    }
-    return str.substr(s);
-}
