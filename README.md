@@ -1,11 +1,11 @@
-cpp-iniparser
+cpp-properties
 =============
 
 A small C++ Java properties parser.
 
 How to build
 ------------
-cpp-iniparser uses CMake build system (http://www.cmake.org/).
+cpp-properties uses CMake build system (http://www.cmake.org/).
 
 __Linux:__
 

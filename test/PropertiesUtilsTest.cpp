@@ -46,7 +46,7 @@ TEST(PropertiesUtils, TestParseProperty) {
 
     p = PropertiesUtils::ParseProperty(" key = value ");
     EXPECT_EQ("key", p.first);
-    EXPECT_EQ("value", p.second);
+    EXPECT_EQ("value ", p.second);
 
     p = PropertiesUtils::ParseProperty(" key =  ");
     EXPECT_EQ("key", p.first);

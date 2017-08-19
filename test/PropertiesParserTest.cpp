@@ -46,11 +46,11 @@ TEST(PropertiesParser, TestReadFileNotFound) {
 
 TEST(PropertiesParser, TestWrite) {
     Properties inProps;
-    inProps.AddProperty("key1", "value1");
+    inProps.AddProperty("key1", " value1");
     inProps.AddProperty("key2", "value2");
     inProps.AddProperty("key3", "value3");
     inProps.AddProperty("key4", "value4");
-    inProps.AddProperty("key5", "value5");
+    inProps.AddProperty("key5", " value5 ");
 
     PropertiesParser::Write("test/out.properties", inProps);
 
@@ -62,7 +62,7 @@ TEST(PropertiesParser, TestWrite) {
     EXPECT_EQ("value2", outProps.GetProperty("key2"));
     EXPECT_EQ("value3", outProps.GetProperty("key3"));
     EXPECT_EQ("value4", outProps.GetProperty("key4"));
-    EXPECT_EQ("value5", outProps.GetProperty("key5"));
+    EXPECT_EQ("value5 ", outProps.GetProperty("key5"));
 
     // delete the file at the end
     std::remove("../test/out.properties");
