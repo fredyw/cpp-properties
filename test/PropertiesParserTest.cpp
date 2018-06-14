@@ -63,7 +63,4 @@ TEST(PropertiesParser, TestWrite) {
     EXPECT_EQ("value3", outProps.GetProperty("key3"));
     EXPECT_EQ("value4", outProps.GetProperty("key4"));
     EXPECT_EQ("value5 ", outProps.GetProperty("key5"));
-
-    // delete the file at the end
-    std::remove("../test/out.properties");
 }
