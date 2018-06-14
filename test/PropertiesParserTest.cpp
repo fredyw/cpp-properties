@@ -28,7 +28,7 @@ using namespace testing;
 using namespace cppproperties;
 
 TEST(PropertiesParser, TestRead) {
-    Properties props = PropertiesParser::Read("test/test1.properties");
+    Properties props = PropertiesParser::Read("test/properties/test1.properties");
     EXPECT_EQ("foo", props.GetProperty("name1"));
     EXPECT_EQ("hello", props.GetProperty("msg1"));
 
@@ -37,7 +37,7 @@ TEST(PropertiesParser, TestRead) {
 }
 
 TEST(PropertiesParser, TestReadInvalidFile) {
-    EXPECT_THROW(PropertiesParser::Read("test/test2.properties"), PropertiesException);
+    EXPECT_THROW(PropertiesParser::Read("test/properties/test2.properties"), PropertiesException);
 }
 
 TEST(PropertiesParser, TestReadFileNotFound) {
@@ -52,9 +52,9 @@ TEST(PropertiesParser, TestWrite) {
     inProps.AddProperty("key4", "value4");
     inProps.AddProperty("key5", " value5 ");
 
-    PropertiesParser::Write("test/out.properties", inProps);
+    PropertiesParser::Write("test/properties/out.properties", inProps);
 
-    Properties outProps = PropertiesParser::Read("test/out.properties");
+    Properties outProps = PropertiesParser::Read("test/properties/out.properties");
 
     std::vector<std::string> names = outProps.GetPropertyNames();
     EXPECT_EQ(5, names.size());
