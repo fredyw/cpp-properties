@@ -39,11 +39,11 @@ Properties PropertiesParser::Read(const std::string& file) {
     std::ifstream is;
     is.open(file.c_str());
     if (!is.is_open()) {
-        std::string msg = "Unable to read " + file;
-        throw PropertiesException(msg.c_str());
+        throw PropertiesException("PropertiesParser::Read(" + file + "): Unable to open file for reading.");
     }
 
     try {
+        size_t linenr = 0;
         std::string line;
         while (getline(is, line)) {
             if (PropertiesUtils::IsEmptyLine(line) || PropertiesUtils::IsComment(line)) {
@@ -52,9 +52,9 @@ Properties PropertiesParser::Read(const std::string& file) {
                 std::pair<std::string, std::string> prop = PropertiesUtils::ParseProperty(line);
                 properties.AddProperty(prop.first, prop.second);
             } else {
-                std::string msg = "Invalid line: " + line;
-                throw PropertiesException(msg.c_str());
+                throw PropertiesException("PropertiesParser::Read(" + file + "): Invalid line " + std::to_string(linenr) + ": " + line);
             }
+            ++linenr;
         }
         is.close();
     } catch (...) {
@@ -70,8 +70,7 @@ void PropertiesParser::Write(const std::string& file, const Properties& props) {
     std::ofstream os;
     os.open(file.c_str());
     if (!os.is_open()) {
-        std::string msg = "Unable to write " + file;
-        throw PropertiesException(msg.c_str());
+        throw PropertiesException("PropertiesParser::Write(" + file + "): Unable to open file for writing.");
     }
 
     try {

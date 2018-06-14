@@ -32,8 +32,7 @@ Properties::~Properties() {
 
 std::string Properties::GetProperty(const std::string& key) const {
     if (properties.find(key) == properties.end()) {
-        std::string msg = key + " does not exist";
-        throw PropertyNotFoundException(msg.c_str());
+        throw PropertyNotFoundException(key + " does not exist");
     }
     return properties.at(key);
 }
@@ -58,8 +57,7 @@ void Properties::AddProperty(const std::string& key, const std::string& value) {
 
 void Properties::RemoveProperty(const std::string& key) {
     if (properties.find(key) == properties.end()) {
-        std::string msg = key + " does not exist";
-        throw PropertyNotFoundException(msg.c_str());
+        throw PropertyNotFoundException(key + " does not exist");
     }
     keys.erase(std::remove(keys.begin(), keys.end(), key), keys.end());
     properties.erase(key);
