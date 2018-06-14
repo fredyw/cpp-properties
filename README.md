@@ -1,11 +1,11 @@
-cpp-properties
+cppproperties
 =============
 
 A small C++ Java properties parser.
 
 How to build
 ------------
-cpp-properties uses CMake build system (http://www.cmake.org/).
+cppproperties uses CMake build system (http://www.cmake.org/).
 
 __Linux:__
 
