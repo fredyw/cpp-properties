@@ -26,28 +26,10 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "PropertiesException.h"
+#include "PropertyNotFoundException.h"
 
 namespace cppproperties {
-
-class PropertiesException : public std::exception {
-public:
-    PropertiesException(const char* msg) throw() : message(msg) {}
-    virtual ~PropertiesException() throw() {}
-
-    virtual const char* what() const throw() { return message; }
-private:
-    const char* message;
-};
-
-class PropertyNotFoundException : public std::exception {
-public:
-    PropertyNotFoundException(const char* msg) throw() : message(msg) {}
-    virtual ~PropertyNotFoundException() throw() {}
-
-    virtual const char* what() const throw() { return message; }
-private:
-    const char* message;
-};
 
 class Properties {
 public:
