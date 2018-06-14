@@ -30,12 +30,17 @@ namespace cppproperties {
 
 class PropertyNotFoundException : public std::exception {
 public:
-    PropertyNotFoundException(const char* msg) throw() : message(msg) {}
+    PropertyNotFoundException() {}
+    PropertyNotFoundException(const std::string& msg) throw() : message(msg) {}
+
     virtual ~PropertyNotFoundException() throw() {}
 
-    virtual const char* what() const throw() { return message; }
+    const std::string& str() const throw() { return message; }
+
+    virtual const char* what() const throw() { return message.c_str(); }
+
 private:
-    const char* message;
+    std::string message;
 };
 
 } /* namespace cppproperties */

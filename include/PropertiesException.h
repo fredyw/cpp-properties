@@ -30,12 +30,17 @@ namespace cppproperties {
 
 class PropertiesException : public std::exception {
 public:
-    PropertiesException(const char* msg) throw() : message(msg) {}
+    PropertiesException() {}
+    PropertiesException(const std::string& msg) throw() : message(msg) {}
+
     virtual ~PropertiesException() throw() {}
 
-    virtual const char* what() const throw() { return message; }
+    const std::string& str() const throw() { return message; }
+
+    virtual const char* what() const throw() { return message.c_str(); }
+
 private:
-    const char* message;
+    std::string message;
 };
 
 } /* namespace cppproperties */
