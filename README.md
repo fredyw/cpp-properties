@@ -1,34 +1,28 @@
-cppproperties
-=============
-
+# cpp-properties
 A small C++ Java properties parser.
 
-How to build
-------------
-cppproperties uses CMake build system (http://www.cmake.org/).
+## How to build
+cpp-properties uses CMake build system (http://www.cmake.org/).
 
-__Linux:__
+```
+./build.sh
+```
 
-    ./build.sh
-    
-__Windows:__
-
-    ./build.bat
-
-Examples
---------
+## Examples
 __input.properties__
-
-    key1=value1
-    key2=value2
-    key3=value3
-    key4=value4
+```
+key1=value1
+key2=value2
+key3=value3
+key4=value4
+```
 
 __output.properties__
-
-    key100=value100
-    key200=value200
-    key300=value300
+```
+key100=value100
+key200=value200
+key300=value300
+```
 
 __Main.cpp__
 ```c++
