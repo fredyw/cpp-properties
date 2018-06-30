@@ -1,13 +1,17 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
+NAME=cpp-properties
 BUILD_DIR=build
 
-rm -rf $BUILD_DIR || true
-mkdir $BUILD_DIR
-cd $BUILD_DIR
-cmake -Dtest=ON ..
+rm -rf ${BUILD_DIR} || true
+mkdir ${BUILD_DIR}
+pushd ${BUILD_DIR}
+cmake -DCMAKE_INSTALL_PREFIX:PATH=/${NAME} ..
+cmake -DENABLE_TEST=ON ..
 make
-cd ..
-$BUILD_DIR/cppproperties_unittests
+./cppproperties_unittests
+make DESTDIR=. install
+tar czf ${NAME}.tar.gz ${NAME}/
+popd

@@ -1,13 +1,17 @@
+# Vim
 .*.swp
-/Debug
-/build
-.cproject
-.project
-.settings
+
+# IDEA
+.idea/
+cmake-build-debug/
+
+# CMake
 CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
+
+# cpp-properties
+build/
 libgtest.a
 libgtest_main.a
 Makefile
-

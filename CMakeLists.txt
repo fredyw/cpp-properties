@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 project(cppproperties VERSION 1.0.0)
@@ -34,8 +33,6 @@ set_target_properties(cppproperties PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
     CXX_EXTENSIONS NO)
-#    CXX_VISIBILITY_PRESET hidden
-#    VISIBILITY_INLINES_HIDDEN ON)
 
 # Add uninstall target
 configure_file(cmake/CMakeUninstall.cmake.in
@@ -81,7 +78,7 @@ install(FILES
 install(EXPORT cpppropertiesTargets
     DESTINATION lib/cmake/)
 
-if (ENABLE_TEST)
+if(ENABLE_TEST)
     enable_testing()
 
     add_executable(cppproperties_unittests
@@ -94,7 +91,7 @@ if (ENABLE_TEST)
     if(GTEST_FOUND)
         target_include_directories(cppproperties_unittests PUBLIC ${GTEST_INCLUDE_DIRS})
         target_link_libraries(cppproperties_unittests PRIVATE ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES})
-    elseif()
+    else()
         add_subdirectory(lib/gtest-1.7.0)
         target_include_directories(cppproperties_unittests PUBLIC ${gtest_SOURCE_DIR}/include)
         target_link_libraries(cppproperties_unittests PRIVATE gtest gtest_main)
