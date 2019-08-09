@@ -54,7 +54,7 @@ write_basic_package_version_file(
 configure_package_config_file(
     cmake/cpppropertiesConfig.cmake.in
     cmake/cpppropertiesConfig.cmake
-    INSTALL_DESTINATION lib/cmake/)
+    INSTALL_DESTINATION lib/cmake/cppproperties/)
 
 include(GenerateExportHeader)
 generate_export_header(cppproperties)
@@ -73,10 +73,10 @@ install(FILES
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/cmake/cpppropertiesConfig.cmake
     ${CMAKE_CURRENT_BINARY_DIR}/cmake/cpppropertiesConfigVersion.cmake
-    DESTINATION lib/cmake/)
+    DESTINATION lib/cmake/cppproperties/)
 
 install(EXPORT cpppropertiesTargets
-    DESTINATION lib/cmake/)
+    DESTINATION lib/cmake/cppproperties/)
 
 if(ENABLE_TEST)
     enable_testing()
